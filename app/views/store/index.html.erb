@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= "You have been here #{pluralize(session[:counter], 'time', 'times')}!" if session[:counter] > 5%></h2>
 <h1>The Catalog</h1>
-
 <% cache @products.each do %>
   <% @products.each do |product| %>
     <% cache product do %>
