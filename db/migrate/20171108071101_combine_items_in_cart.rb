@@ -1,7 +1,4 @@
 class CombineItemsInCart < ActiveRecord::Migration[5.1]
-  def change
-  end
-
   def up
     # merge multiple items for a single product in a cart
     Cart.all.each do |cart|
@@ -13,7 +10,7 @@ class CombineItemsInCart < ActiveRecord::Migration[5.1]
           cart.line_items.where(product_id: product_id).delete_all
 
           #replace with a single iitem
-          item = cart.line_item.build(product_id: product_id)
+          item = cart.line_items.build(product_id: product_id)
           item.quantity = quantity
           item.save!
         end
