@@ -1,4 +1,5 @@
 class StoreController < ApplicationController
+  include ActionView::Helpers::TextHelper
   after_action :increment_counter, only: [:index]
 
   def increment_counter 
@@ -11,6 +12,10 @@ class StoreController < ApplicationController
   
   def index
     @products = Product.order(:title)
+    @count_message
+    if !session[:counter].nil? and session[:counter] > 5
+      @count_message =  "You have been here #{pluralize(session[:counter], 'time', 'times')}!"
+    end
   end
 end
 
