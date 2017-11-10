@@ -1,5 +1,7 @@
 class StoreController < ApplicationController
   include ActionView::Helpers::TextHelper
+  include CurrentCart
+  before_action :set_cart
   after_action :increment_counter, only: [:index]
 
   def increment_counter 
