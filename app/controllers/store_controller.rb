@@ -1,4 +1,5 @@
 class StoreController < ApplicationController
+  skip_before_action :authorize
   include ActionView::Helpers::TextHelper
   include CurrentCart
   before_action :set_cart

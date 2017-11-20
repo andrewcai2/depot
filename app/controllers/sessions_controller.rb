@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  skip_before_action :authorize
 
   def create
     user = User.find_by(name: params[:name])
